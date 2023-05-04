@@ -94,4 +94,19 @@ jobs:
       - name: Pull Docker
         run: docker-compose pull
       - name: Build Docker
+        env:
+          BEPORT: ${{secrets.BEPORT}}
+          ENVIRONMENT: ${{secrets.ENVIRONMENT}}
+          FEPORT: ${{secrets.FEPORT}}
+          HCPATCHA_SECRET_KEY: ${{secrets.HCPATCHA_SECRET_KEY}}
+          HCPATCHA_SITE_KEY: ${{secrets.API_TOKEN_SALT}}
+          JWT_KEY: ${{secrets.JWT_KEY}}
+          API_URL: ${{secrets.API_URL}}
+          NEXT_PUBLIC_HCPATCHA_SITE_KEY: ${{secrets.NEXT_PUBLIC_HCPATCHA_SITE_KEY}}
+          OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+          PGDATABASE: ${{secrets.PGDATABASE}}
+          PGHOST: ${{secrets.PGHOST}}
+          PGPASSWORD: ${{secrets.PGPASSWORD}}
+          PGPORT: ${{secrets.PGPORT}}
+          PGUSERNAME: ${{secrets.PGUSERNAME}}
         run: docker-compose build
